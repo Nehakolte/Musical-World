@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage("Deploy to remote") {
             steps {
+                ssh -o StrictHostKeyChecking=no ...
                 sh "scp -r ${WORKSPACE}/* root@${env.staging_server}:/var/www/html/Musical_World/"
             }
         }
