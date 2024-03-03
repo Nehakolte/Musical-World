@@ -1,17 +1,13 @@
 pipeline {
     agent any
     environment {
-        staging_server ="15.229.18.65"
+        staging_server = "15.229.18.65"
     }
     stages {
-        stage("Delpoy to remote") {
+        stage("Deploy to remote") {
             steps {
-            sh '''
-                scp -r ${WORKSPACE}/* root@${staging_server}:/var/www/html/Musical_World/*'
-            '''
+                sh "scp -r ${WORKSPACE}/* root@${env.staging_server}:/var/www/html/Musical_World/"
             }
         }
-        
     }
-    
 }
